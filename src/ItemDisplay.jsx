@@ -9,7 +9,7 @@ const ItemDisplay = (props) => {
         {items.map((item, index) => (
           <div key={index}>
             <div>Item Name: {item.name}</div>
-            <div>Item Price:${item.price}</div>
+            <div>Item Price:{item.price}</div>
             <button>Buy</button>
           </div>
         ))}

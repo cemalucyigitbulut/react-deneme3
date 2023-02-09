@@ -52,7 +52,7 @@ const AddItem = () => {
           onChange={handlePriceChange}
         />
         <br />
-        <button type="submit">Add Item</button>
+        <button type="submit" style={{ cursor: "pointer"  }}>Add Item</button>
       </form>
       <ItemDisplay items={items} />
     </>
