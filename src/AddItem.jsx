@@ -11,6 +11,11 @@ const AddItem = () => {
   });
 
 
+  useEffect(()=>{
+    setCount(Number(sessionStorage.getItem("count")) || 0)
+  }, [sessionStorage.getItem("count")])
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -18,8 +23,9 @@ const AddItem = () => {
       alert("enter both the item and the price");
       return;
     }
-
-    setItems([...items, { name: itemName, price: Number(itemPrice) }]);
+    const newItems = [...items, { name: itemName, price: Number(itemPrice) }];
+    setItems(newItems);
+    sessionStorage.setItem("items", JSON.stringify(newItems));
     setItemName("");
     setItemPrice("");
   };

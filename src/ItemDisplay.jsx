@@ -4,6 +4,7 @@ import AddItem from "./AddItem";
 const ItemDisplay = (props) => {
     const items = props.items || [];
     const handleBuy = props.handleBuy;
+    const count= props.count;
     return (
       <div className="Item-Border-Box">
         <h2>Items</h2>
