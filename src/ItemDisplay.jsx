@@ -3,6 +3,7 @@ import AddItem from "./AddItem";
 
 const ItemDisplay = (props) => {
     const items = props.items || [];
+    const handleBuy = props.handleBuy;
     return (
       <div className="Item-Border-Box">
         <h2>Items</h2>
@@ -10,7 +11,7 @@ const ItemDisplay = (props) => {
           <div key={index}>
             <div>Item Name: {item.name}</div>
             <div>Item Price:{item.price}</div>
-            <button>Buy</button>
+            <button onClick={() => handleBuy(item)}>Buy</button>
           </div>
         ))}
       </div>

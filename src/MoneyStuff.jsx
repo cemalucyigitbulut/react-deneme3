@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 
 const MoneyStuff = () => {
-  const [count, setCount] = useState(Number(sessionStorage.getItem("count")) || 0);
+  const [count, setCount] = useState(
+    Number(sessionStorage.getItem("count")) || 0
+  );
   const [value, setValue] = useState("");
   const [error, setError] = useState(null);
 
   useEffect(() => {sessionStorage.setItem("count" , count); }, [count]);
+
 
   const doClick = (e) => {
     if (value === "") {
@@ -13,7 +16,7 @@ const MoneyStuff = () => {
     }
     const noNumber = parseInt(value);
     if (isNaN(noNumber)) {
-       setError("write numbers");
+      setError("write numbers");
       return;
     }
 
@@ -22,11 +25,12 @@ const MoneyStuff = () => {
     setError(null);
   };
 
-  const moneyClear = () =>{
+ 
+  const moneyClear = () => {
     setCount(0);
-    setValue("")
-    setError(null)
-  }
+    setValue("");
+    setError(null);
+  };
 
   return (
     <>
@@ -37,11 +41,12 @@ const MoneyStuff = () => {
         onChange={(e) => setValue(e.target.value)}
         placeholder="add money"
       />
-      <button onClick={doClick} style={{ cursor: "pointer"  }}>Add</button>
-      <button onClick={moneyClear} style={{ color:"crimson"  ,backgroundColor: "black" ,cursor: "pointer" }}>Clear Money</button>
+      <button onClick={doClick} style={{ cursor: "pointer" }}>
+        Add
+      </button>
+      <button onClick={moneyClear} style={{color: "crimson",backgroundColor: "black",cursor: "pointer",}}>Clear Money</button>
       {error && <p style={{ color: "red" }}> {error} </p>}
       <div>your money : {count}</div>
-
     </>
   );
 };

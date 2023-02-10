@@ -4,11 +4,12 @@ import ItemDisplay from "./ItemDisplay";
 const AddItem = () => {
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState("");
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem("items")) || []);
+  const [items, setItems] = useState(JSON.parse(sessionStorage.getItem("items")) || []);
+  const [count, setCount] = useState(() => {
+    const countFromStorage = sessionStorage.getItem("count");
+    return countFromStorage !== null ? Number(countFromStorage) : 0;
+  });
 
-  useEffect(()=>{
-    localStorage.setItem("items", JSON.stringify(items))
-  }, [items])
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,7 +19,7 @@ const AddItem = () => {
       return;
     }
 
-    setItems([...items, { name: itemName, price: itemPrice }]);
+    setItems([...items, { name: itemName, price: Number(itemPrice) }]);
     setItemName("");
     setItemPrice("");
   };
@@ -36,6 +37,19 @@ const AddItem = () => {
       setItemPrice(price);
     }
   };
+
+
+  const handleBuy = (item) => {
+    const countFromSession = Number(sessionStorage.getItem("count"));
+    if (countFromSession < item.price) {
+      alert("You don't have enough money to buy this item");
+      return
+    }
+    const newCount = countFromSession - item.price;
+    sessionStorage.setItem("count", newCount);
+    setCount(newCount);
+    setItems(items.filter((i) => i !== item));
+};
 
   return (
     <>
@@ -58,7 +72,7 @@ const AddItem = () => {
         <br />
         <button type="submit" style={{ cursor: "pointer"  }}>Add Item</button>
       </form>
-      <ItemDisplay items={items} />
+      <ItemDisplay items={items} handleBuy={handleBuy} />
     </>
   );
 };
