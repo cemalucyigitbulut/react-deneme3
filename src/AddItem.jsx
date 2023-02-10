@@ -54,7 +54,9 @@ const AddItem = () => {
     const newCount = countFromSession - item.price;
     sessionStorage.setItem("count", newCount);
     setCount(newCount);
-    setItems(items.filter((i) => i !== item));
+    const updateItems = items.filter((i) => i !== item)
+    setItems(updateItems);
+    sessionStorage.setItem("items", JSON.stringify(updateItems));
 };
 
   return (
