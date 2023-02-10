@@ -4,7 +4,11 @@ import ItemDisplay from "./ItemDisplay";
 const AddItem = () => {
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState("");
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem("items")) || []);
+
+  useEffect(()=>{
+    localStorage.setItem("items", JSON.stringify(items))
+  }, [items])
 
   const handleSubmit = (event) => {
     event.preventDefault();
