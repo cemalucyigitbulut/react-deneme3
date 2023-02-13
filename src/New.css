@@ -1,0 +1,173 @@
+*{
+    text-align: center;
+    text-decoration: none;
+    font-family:'Zen Kaku Gothic New', sans-serif; 
+    text-transform: capitalize;
+}
+
+body{
+    background-color: rgb(34, 33, 33);    
+}
+
+h1 , h2{
+    color:white;
+}
+
+.AddMInput {
+    background-color: rgb(9, 196, 108);
+    /* border: medium solid rgb(9, 196, 108); */
+    border: none;
+    border-radius: 4px;
+    width:250px;
+    max-width: 250px;
+    height: 30px;
+    margin:20px;
+    /* padding:10px; */
+}
+
+::placeholder{
+    color:rgb(34, 33, 33);
+}
+
+input, select, textarea{
+    color: lightgray
+}
+
+textarea:focus, input:focus {
+    color: whitesmoke
+}
+
+.YourMoney{
+    text-transform: capitalize;
+    color: rgb(9, 196, 108);
+}
+
+.ClearM{
+    border: none;
+    border-radius: 4px;
+    max-width:200;
+    height: 40px;
+    background-color: black;
+    color: rgb(9, 196, 108);
+    text-align: left;
+    font-size: 15px;
+    padding: 8px 16px; 
+    margin:5px;
+}
+
+.ClearM:hover{
+    background-color: rgb(9, 196, 108);;
+    color: black;
+    transition: 0.4s;
+}
+
+.AddM{
+    border: none;
+    border-radius: 4px;
+    max-width:200;
+    height: 40px;
+    background-color: black;
+    color: rgb(9, 196, 108);
+    text-align: left;
+    font-size: 15px;
+    padding: 8px 16px; 
+    margin:5px;
+}
+
+.AddM:hover{
+    background-color: rgb(9, 196, 108);;
+    color: black;
+    transition: 0.4s;
+}
+
+
+.AddItemPrice {
+    background-color: rgb(9, 196, 108);
+    border: none;
+    border-radius: 4px;
+    width:250px;
+    max-width: 250px;
+    height: 30px;
+    margin: 5px;
+    
+}
+
+.AddItemName {
+    background-color: rgb(9, 196, 108);
+    border: none;
+    border-radius: 4px;
+    width:250px;
+    max-width: 250px;
+    height: 30px;
+    margin: 5px;
+    
+}
+
+.NormalText{
+    color:rgb(9, 196, 108);
+}
+
+.AddItemButton{
+    border: none;
+    border-radius: 4px;
+    max-width:200;
+    height: 40px;
+    background-color: black;
+    color: rgb(9, 196, 108);
+    text-align: left;
+    font-size: 15px;
+    padding: 8px 16px; 
+    margin:5px;
+}
+
+.AddItemButton:hover{
+    background-color: rgb(9, 196, 108);
+    color: black;
+    transition: 0.4s;
+}
+
+.Item-Border-Box{
+    /* border: medium solid rgb(9, 196, 108); */
+    /* border-radius: 4px; */
+    margin: auto;
+    width: 50%;
+}
+
+.ItemNameDP{
+    border: medium solid rgb(34, 33, 33);  
+    border-radius: 11px;
+    margin: auto;
+    width: 50%;
+    background-color: black
+}
+
+.ItemD{
+    color: white;
+}
+
+.ItemD a{
+    color:rgb(9, 196, 108);
+}
+
+.BuyButton{
+    border: none;
+    border-radius: 4px;
+    max-width:200;
+    height: 40px;
+    background-color: rgb(9, 196, 108);
+    color: rgb(34, 33, 33);  
+    text-align: left;
+    font-size: 15px;
+    padding: 8px 16px; 
+    margin:5px;
+}
+
+.BuyButton:hover{
+    background-color: rgb(34, 33, 33);  
+    color: rgb(9, 196, 108);
+    transition: 0.4s;
+}
+
+
+
+

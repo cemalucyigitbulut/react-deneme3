@@ -7,8 +7,9 @@ const MoneyStuff = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState(null);
 
-  useEffect(() => {sessionStorage.setItem("count" , count); }, [count]);
-
+  useEffect(() => {
+    sessionStorage.setItem("count", count);
+  }, [count]);
 
   const doClick = (e) => {
     if (value === "") {
@@ -25,7 +26,6 @@ const MoneyStuff = () => {
     setError(null);
   };
 
- 
   const moneyClear = () => {
     setCount(0);
     setValue("");
@@ -40,15 +40,29 @@ const MoneyStuff = () => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder="add money"
+        className="AddMInput"
       />
-      <button onClick={doClick} style={{ cursor: "pointer" }}>
-        Add
-      </button>
-      <button onClick={moneyClear} style={{color: "crimson",backgroundColor: "black",cursor: "pointer",}}>Clear Money</button>
-      {error && <p style={{ color: "red" }}> {error} </p>}
-      <div>your money : {count}</div>
+      <div>
+        <button
+          className="AddM"
+          onClick={doClick}
+          style={{ cursor: "pointer" }}
+        >
+          Add
+        </button>
+        <button className="ClearM" onClick={moneyClear}>
+          Clear Money
+        </button>
+      </div>
+      <div>
+        <br />
+        <div className="YourMoney">your money : {count}</div>
+      </div>
+      <div className="setError">{error && <p style={{ color: "red" }}> {error} </p>}</div>
     </>
   );
 };
+
+//  <button onClick={doClick} style={{color: "crimson",backgroundColor: "black",cursor: "pointer",}} Add </button>
 
 export default MoneyStuff;

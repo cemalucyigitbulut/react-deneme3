@@ -9,10 +9,10 @@ const ItemDisplay = (props) => {
       <div className="Item-Border-Box">
         <h2>Items</h2>
         {items.map((item, index) => (
-          <div key={index}>
-            <div>Item Name: {item.name}</div>
-            <div>Item Price:{item.price}</div>
-            <button onClick={() => handleBuy(item)}>Buy</button>
+          <div className="ItemNameDP" key={index}>
+            <div className="ItemD">Item Name: <a href="#">{item.name}</a> </div>
+            <div className="ItemD">Item Price: <a href="#">{item.price}$</a></div>
+            <button className="BuyButton" onClick={() => handleBuy(item)}>Buy</button>
           </div>
         ))}
       </div>

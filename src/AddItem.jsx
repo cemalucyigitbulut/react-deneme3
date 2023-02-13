@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ItemDisplay from "./ItemDisplay";
+import MoneyStuff from "./MoneyStuff";
 
 const AddItem = () => {
   const [itemName, setItemName] = useState("");
@@ -10,10 +11,20 @@ const AddItem = () => {
     return countFromStorage !== null ? Number(countFromStorage) : 0;
   });
 
+  // const [errorMesaj , setErrorMesaj] = useState("");
 
   useEffect(()=>{
     setCount(Number(sessionStorage.getItem("count")) || 0)
   }, [sessionStorage.getItem("count")])
+
+  // const itemWithSameName = items.find( (item) => item.name === itemName);
+  // if (itemWithSameName) {
+  //   setErrorMesaj("Item with that name already exists");
+  //   // alert("Item with that name already exists");
+  //   return;
+  // }
+
+  // setErrorMesaj();
 
 
   const handleSubmit = (event) => {
@@ -23,12 +34,14 @@ const AddItem = () => {
       alert("enter both the item and the price");
       return;
     }
-    const newItems = [...items, { name: itemName, price: Number(itemPrice) }];
+    const newItems = [ { name: itemName, price: Number(itemPrice) } ,...items];
     setItems(newItems);
     sessionStorage.setItem("items", JSON.stringify(newItems));
     setItemName("");
     setItemPrice("");
+    // setErrorMesaj("");
   };
+
 
   const handleNameChange = (event) => {
     const name = event.target.value;
@@ -53,7 +66,7 @@ const AddItem = () => {
     }
     const newCount = countFromSession - item.price;
     sessionStorage.setItem("count", newCount);
-    setCount(newCount);
+    setCount(() => newCount);
     const updateItems = items.filter((i) => i !== item)
     setItems(updateItems);
     sessionStorage.setItem("items", JSON.stringify(updateItems));
@@ -62,13 +75,15 @@ const AddItem = () => {
   return (
     <>
       <h1>Add Items</h1>
+      {/* {errorMesaj && <p style={{ color:"red" }}>{errorMesaj}</p>} */}
       <form onSubmit={handleSubmit}>
-        <p>Fill the parts before adding item</p>
+        <p className="NormalText">Fill the parts before adding item</p>
         <input
           type="text"
           placeholder="Item Name"
           value={itemName}
           onChange={handleNameChange}
+          className="AddItemName"
         />
         <br />
         <input
@@ -76,9 +91,10 @@ const AddItem = () => {
           placeholder="Item Price"
           value={itemPrice}
           onChange={handlePriceChange}
+          className="AddItemPrice"
         />
         <br />
-        <button type="submit" style={{ cursor: "pointer"  }}>Add Item</button>
+        <button className="AddItemButton" type="submit" style={{ cursor: "pointer"  }}>Add Item</button>
       </form>
       <ItemDisplay items={items} handleBuy={handleBuy} />
     </>
